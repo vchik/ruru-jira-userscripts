@@ -40,6 +40,10 @@
             }
         }
 
+        if (!hash) {
+            return false;
+        }
+
         /**
          * Добавляем стиль для лейблов
          */
@@ -110,7 +114,6 @@
                if(response.status == 200){
                    var serv = s.replace(/[\/:]*/gi, "").replace(/http[s]?/gi, "");
                    if( response.responseText.indexOf(hash) > -1 ){
-                       console.log("found on", serv);
                        addLabel(serv);
                    }
                }
