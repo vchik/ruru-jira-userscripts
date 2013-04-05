@@ -2,7 +2,7 @@
 // @name Task on test
 // @description Отметка задачи, если она разложена на тестовом сервере
 // @author Timur Mingaliev
-// @version 1.1
+// @version 1.2
 // @include http://jira.ruru.ru/*
 // ==/UserScript==
 
@@ -49,7 +49,8 @@
          */
         var head = document.getElementsByTagName("head")[0];
         var style = document.createElement("style");
-        style.appendChild(document.createTextNode(".js-userscript-label{display: inline-block; background: #ADD6F7; border-radius:3px; padding: 3px; margin: 0 4px;}"));
+        style.appendChild(document.createTextNode(".js-userscript-label{display: inline-block; background: #ADD6F7; border-radius:3px; padding: 3px; margin: 0 4px;} " +
+                                                  ".js-userscript-label a{color: #333; text-decoration: underline;}"));
         head.appendChild(style);
 
         /**
@@ -93,9 +94,12 @@
         var addLabel = function(text){
             var block = document.getElementById("customfieldmodule");
             var label = document.createElement("div");
+            var link = document.createElement("a");
             label.setAttribute("class", "js-userscript-label");
             var text = document.createTextNode(text);
-            label.appendChild(text);
+            link.appendChild(text);
+            link.setAttribute("src", "http://" + text + "/");
+            label.appendChild(link);
             block.appendChild(label);
         };
 
