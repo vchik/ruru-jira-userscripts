@@ -98,7 +98,7 @@
             label.setAttribute("class", "js-userscript-label");
             var text = document.createTextNode(text);
             link.appendChild(text);
-            link.setAttribute("src", "http://" + text + "/");
+            link.setAttribute("href", "http://" + text + "/");
             label.appendChild(link);
             block.appendChild(label);
         };
