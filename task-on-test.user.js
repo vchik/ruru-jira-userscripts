@@ -96,9 +96,10 @@
             var label = document.createElement("div");
             var link = document.createElement("a");
             label.setAttribute("class", "js-userscript-label");
-            var text = document.createTextNode(text);
-            link.appendChild(text);
+            var textNode = document.createTextNode(text);
+            link.appendChild(textNode);
             link.setAttribute("href", "http://" + text + "/");
+            link.setAttribute("target", "_blank");
             label.appendChild(link);
             block.appendChild(label);
         };
