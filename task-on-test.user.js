@@ -4,22 +4,41 @@
 // @author Timur Mingaliev
 // @version 1.2.1
 // @include http://jira.ruru.ru/*
-// @include http://jira.nsc-tech.ru/*
+// @include https://jira.nsc-tech.ru/*
 // ==/UserScript==
 
+var unsafeWindow= this.unsafeWindow;
+
 (function (window, undefined){
-    var w;
-    if (typeof unsafeWindow != undefined) {
-        w = unsafeWindow
-    } else {
-        w = window;
-    }
+    var unsafeWindow= this.unsafeWindow;
+    (function(){
+        var test_scr= document.createElement("script");
+        var tid= ("t" + Math.random() + +(new Date())).replace(/\./g, "");
+        test_scr.text= "window."+tid+"=true";
+        document.querySelector("body").appendChild(test_scr);
+        if (typeof(unsafeWindow) == "undefined" || !unsafeWindow[tid]) {
+            if (window[tid]) {
+                unsafeWindow= window;
+            } else {
+                var scr= document.createElement("script");
+                scr.text= "(" +
+                    (function() {
+                        var el= document.createElement('unsafeWindow');
+                        el.style.display= 'none';
+                        el.onclick=function(){return window};
+                        document.body.appendChild(el);
+                    }).toString() + ")()";
+                document.querySelector("body").appendChild(scr);
+                this.unsafeWindow= document.querySelector("unsafeWindow").onclick();
+                unsafeWindow= window.unsafeWindow;
+            };
+        }
+    })();
 
-    if (w.self != w.top) {
-        return;
-    }
+    var w = unsafeWindow;
 
-    if (/http:\/\/jira.ruru.ru/.test(w.location.href)) {
+    if (/http:\/\/jira.ruru.ru/.test(w.location.href) ||
+        /https:\/\/jira.nsc-tech.ru/.test(w.location.href)) {
 
 
         /**
@@ -126,4 +145,4 @@
             });
         }
     }
-})(window);
+})(window, undefined);
