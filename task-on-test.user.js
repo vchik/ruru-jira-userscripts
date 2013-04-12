@@ -2,8 +2,9 @@
 // @name Task on test
 // @description Отметка задачи, если она разложена на тестовом сервере
 // @author Timur Mingaliev
-// @version 1.2
+// @version 1.2.1
 // @include http://jira.ruru.ru/*
+// @include http://jira.nsc-tech.ru/*
 // ==/UserScript==
 
 (function (window, undefined){
