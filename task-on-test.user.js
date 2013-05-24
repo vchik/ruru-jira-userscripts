@@ -2,7 +2,7 @@
 // @name Task on test
 // @description Отметка задачи, если она разложена на тестовом сервере
 // @author Timur Mingaliev
-// @version 1.2.1
+// @version 1.3
 // @include http://jira.ruru.ru/*
 // @include https://jira.nsc-tech.ru/*
 // ==/UserScript==
@@ -45,7 +45,8 @@ var unsafeWindow= this.unsafeWindow;
          * Находим хеш коммита
          */
         var els = document.getElementsByTagName("DIV"),
-            hash = false;
+            hash = false,
+            hashElement;
         for(var i = els.length; i--;){
             var el = els[i];
             if( el.getAttribute("data-fieldtype") == "textfield" ){
@@ -55,6 +56,7 @@ var unsafeWindow= this.unsafeWindow;
                     c++;
                 }
                 if( prev.getAttribute("title") == "Git hash" ){
+                    hashElement = el;
                     hash = el.textContent.replace(/\s/gi, "");
                 }
             }
@@ -124,6 +126,13 @@ var unsafeWindow= this.unsafeWindow;
             block.appendChild(label);
         };
 
+        /**
+         * Функция получения названия репозитория
+         */
+        var getRepoName = function(text) {
+            return /gitolite@git\.ruru\.ru:\/([a-zA-Z\-]*)\s\(fetch\)/g.exec(text)[1];
+        }
+
         var testServers = [
             "https://test01.ruru.ru",
             "https://mtest01.ruru.ru",
@@ -140,6 +149,8 @@ var unsafeWindow= this.unsafeWindow;
                    var serv = s.replace(/[\/:]*/gi, "").replace(/http[s]?/gi, "");
                    if( response.responseText.indexOf(hash) > -1 ){
                        addLabel(serv);
+                       var reponame = getRepoName(response.responseText);
+                       hashElement.innerHTML = "<a href=\"http://git.dev.ruru.ru/" + reponame + "/commit/" + hash + "\">" + hash + "</a>";
                    }
                }
             });
