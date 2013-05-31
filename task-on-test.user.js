@@ -137,8 +137,8 @@ var unsafeWindow= this.unsafeWindow;
             "https://test01.ruru.ru",
             "https://mtest01.ruru.ru",
             "https://ktest01.ruru.ru",
-            "http://test01api.ruru.ru",
-            "http://alfa.ruru.ru",
+            "https://test01api.ruru.ru",
+            "https://payalfa.ruru.ru",
             "https://ptest01.ruru.ru"
         ];
 
