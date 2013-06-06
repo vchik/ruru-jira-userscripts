@@ -2,7 +2,7 @@
 // @name Task on test
 // @description Отметка задачи, если она разложена на тестовом сервере
 // @author Timur Mingaliev
-// @version 1.3
+// @version 1.3.1
 // @include http://jira.ruru.ru/*
 // @include https://jira.nsc-tech.ru/*
 // ==/UserScript==
@@ -136,10 +136,23 @@ var unsafeWindow= this.unsafeWindow;
         var testServers = [
             "https://test01.ruru.ru",
             "https://mtest01.ruru.ru",
+            "https://mtest02.ruru.ru",
             "https://ktest01.ruru.ru",
             "https://test01api.ruru.ru",
             "https://payalfa.ruru.ru",
-            "https://ptest01.ruru.ru"
+            "https://ptest01.ruru.ru",
+            "https://test06.ruru.ru",
+            "https://test03.ruru.ru",
+            "https://test04.ruru.ru",
+            "https://alfa01.ruru.ru",
+            "https://ncalfa01.ruru.ru",
+            "https://widget01.ruru.ru",
+            "https://api8.ruru.ru",
+            "https://api8.ruru.ru",
+            // https://fmoney.ruru.ru/rev.txt
+            // https://fkvartplata.ruru.ru/rev.txt
+            "https://follow.ruru.ru",
+            "https://follow2.ruru.ru"
         ];
 
         for(var i = testServers.length; i--;){
