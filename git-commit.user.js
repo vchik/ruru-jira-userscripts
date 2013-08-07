@@ -2,41 +2,13 @@
 // @name Git commit comment
 // @description Сборка текста для коммита в гите
 // @author Timur Mingaliev
-// @version 1.1
+// @version 1.1.1
 // @include http://jira.ruru.ru/*
 // @include https://jira.nsc-tech.ru/*
 // ==/UserScript==
 
-var unsafeWindow= this.unsafeWindow;
-
-(function (window, undefined){
-    var unsafeWindow= this.unsafeWindow;
-    (function(){
-        var test_scr= document.createElement("script");
-        var tid= ("t" + Math.random() + +(new Date())).replace(/\./g, "");
-        test_scr.text= "window."+tid+"=true";
-        document.querySelector("body").appendChild(test_scr);
-        if (typeof(unsafeWindow) == "undefined" || !unsafeWindow[tid]) {
-            if (window[tid]) {
-                unsafeWindow= window;
-            } else {
-                var scr= document.createElement("script");
-                scr.text= "(" +
-                    (function() {
-                        var el= document.createElement('unsafeWindow');
-                        el.style.display= 'none';
-                        el.onclick=function(){return window};
-                        document.body.appendChild(el);
-                    }).toString() + ")()";
-                document.querySelector("body").appendChild(scr);
-                this.unsafeWindow= document.querySelector("unsafeWindow").onclick();
-                unsafeWindow= window.unsafeWindow;
-            };
-        }
-    })();
-
-    var w = unsafeWindow,
-        els,
+(function (w, undefined){
+    var els,
         comment,
         commentNode,
         branchName,

@@ -2,41 +2,12 @@
 // @name Task on test
 // @description Отметка задачи, если она разложена на тестовом сервере
 // @author Timur Mingaliev
-// @version 1.3.1
+// @version 1.3.2
 // @include http://jira.ruru.ru/*
 // @include https://jira.nsc-tech.ru/*
 // ==/UserScript==
 
-var unsafeWindow= this.unsafeWindow;
-
-(function (window, undefined){
-    var unsafeWindow= this.unsafeWindow;
-    (function(){
-        var test_scr= document.createElement("script");
-        var tid= ("t" + Math.random() + +(new Date())).replace(/\./g, "");
-        test_scr.text= "window."+tid+"=true";
-        document.querySelector("body").appendChild(test_scr);
-        if (typeof(unsafeWindow) == "undefined" || !unsafeWindow[tid]) {
-            if (window[tid]) {
-                unsafeWindow= window;
-            } else {
-                var scr= document.createElement("script");
-                scr.text= "(" +
-                    (function() {
-                        var el= document.createElement('unsafeWindow');
-                        el.style.display= 'none';
-                        el.onclick=function(){return window};
-                        document.body.appendChild(el);
-                    }).toString() + ")()";
-                document.querySelector("body").appendChild(scr);
-                this.unsafeWindow= document.querySelector("unsafeWindow").onclick();
-                unsafeWindow= window.unsafeWindow;
-            };
-        }
-    })();
-
-    var w = unsafeWindow;
-
+(function (w, undefined){
     if (/http:\/\/jira.ruru.ru/.test(w.location.href) ||
         /https:\/\/jira.nsc-tech.ru/.test(w.location.href)) {
 
@@ -147,7 +118,6 @@ var unsafeWindow= this.unsafeWindow;
             "https://alfa01.ruru.ru",
             "https://ncalfa01.ruru.ru",
             "https://widget01.ruru.ru",
-            "https://api8.ruru.ru",
             "https://api8.ruru.ru",
             // https://fmoney.ruru.ru/rev.txt
             // https://fkvartplata.ruru.ru/rev.txt
