@@ -122,7 +122,8 @@
             // https://fmoney.ruru.ru/rev.txt
             // https://fkvartplata.ruru.ru/rev.txt
             "https://follow.ruru.ru",
-            "https://follow2.ruru.ru"
+            "https://follow2.ruru.ru",
+            "https://vktest01.ruru.ru"
         ];
 
         for(var i = testServers.length; i--;){
