@@ -2,7 +2,7 @@
 // @name Git commit comment
 // @description Сборка текста для коммита в гите
 // @author Timur Mingaliev
-// @version 1.1.1
+// @version 1.1.2
 // @include http://jira.ruru.ru/*
 // @include https://jira.nsc-tech.ru/*
 // ==/UserScript==
