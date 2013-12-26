@@ -110,6 +110,7 @@
             "https://mtest02.ruru.ru",
             "https://ktest01.ruru.ru",
             "https://test01api.ruru.ru",
+            "https://test01api.ruru.ru/v2",
             "https://payalfa.ruru.ru",
             "https://ptest01.ruru.ru",
             "https://test06.ruru.ru",
