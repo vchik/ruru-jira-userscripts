@@ -130,7 +130,7 @@
             var server = testServers[i];
             serverRequest(server+"/rev.txt?", server, function(response, s){
                if(response.status == 200){
-                   var serv = s.replace(/[\/:]*/gi, "").replace(/http[s]?/gi, "");
+                   var serv = s.replace(/http[s]?/gi, "").replace(/^[\/:]*/gi, "");
                    if( response.responseText.indexOf(hash) > -1 ){
                        addLabel(serv);
                        var reponame = getRepoName(response.responseText);
