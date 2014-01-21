@@ -2,7 +2,7 @@
 // @name Task on test
 // @description Отметка задачи, если она разложена на тестовом сервере
 // @author Timur Mingaliev
-// @version 1.3.4
+// @version 1.3.5
 // @include http://jira.ruru.ru/*
 // @include https://jira.nsc-tech.ru/*
 // ==/UserScript==
@@ -123,7 +123,8 @@
             // https://fkvartplata.ruru.ru/rev.txt
             "https://follow.ruru.ru",
             "https://follow2.ruru.ru",
-            "https://vktest01.ruru.ru"
+            "https://vktest01.ruru.ru",
+            "https://testdev.ruru.ru/"
         ];
 
         for(var i = testServers.length; i--;){
