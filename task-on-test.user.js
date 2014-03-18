@@ -2,7 +2,7 @@
 // @name Task on test
 // @description Отметка задачи, если она разложена на тестовом сервере
 // @author Timur Mingaliev
-// @version 1.3.6
+// @version 1.3.7
 // @include http://jira.ruru.ru/*
 // @include https://jira.nsc-tech.ru/*
 // ==/UserScript==
@@ -124,6 +124,7 @@
             "https://follow.ruru.ru",
             "https://follow2.ruru.ru",
             "https://vktest01.ruru.ru",
+            "https://vktest02.ruru.ru",
             "https://testdev.ruru.ru/",
             "https://test02api.ruru.ru",
             "https://test02api.ruru.ru/v2"
